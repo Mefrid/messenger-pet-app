@@ -11,7 +11,6 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "lint": "run-s \"lint:*\"",
-    "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
     "format": "prettier --write --experimental-cli src/"
   },
@@ -21,8 +20,7 @@
     "pinia": "^4.0.2",
     "primevue": "^5.0.0",
     "vue": "^3.5.40",
-    "vue-router": "^5.2.0",
-    "zod": "^4.4.3"
+    "vue-router": "^5.2.0"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^4.0.0",
