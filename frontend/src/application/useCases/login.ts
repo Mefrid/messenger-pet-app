@@ -26,7 +26,7 @@ export const login = async (
 
   webSocketClient.connect(accessToken)
   await authTokenProvider.save(accessToken)
-  await currentUserStore.storeCurrentUser(user)
+  currentUserStore.storeCurrentUser(user)
   await router.changeRoute(ROUTE_NAMES.HOME)
 
   return user

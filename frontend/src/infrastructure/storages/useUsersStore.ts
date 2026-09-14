@@ -30,7 +30,7 @@ export const useUsersStore = defineStore('users', {
         console.error(`User with id ${userId} not found`)
         return
       }
-      this.users = this.users.update(userId, {
+      this.users.update(userId, {
         ...user,
         ...newUser,
       })

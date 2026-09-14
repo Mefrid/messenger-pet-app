@@ -11,7 +11,6 @@ export const useCurrentUserAdapter = (): ICurrentUserStore => {
 
     storeCurrentUser(user) {
       store.currentUser = user
-      return Promise.resolve()
     },
   }
 }

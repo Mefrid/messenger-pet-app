@@ -38,15 +38,21 @@ export class ObjectValueSet<T extends object, K extends Extract<keyof T, string 
     }
   }
 
-  update(id: T[K], newObject: T): ObjectValueSet<T, K> {
-    const objects = Object.values(this.objects) as T[]
-    const newObjects = objects.map((obj) => {
-      if (obj[this.keyProperty] === id) {
-        return newObject
-      }
-      return obj
-    })
-    return new ObjectValueSet(newObjects, this.keyProperty)
+  update(key: T[K], newObjectProperties: Omit<Partial<T>, K>) {
+    const _key = key as Extract<T[K], string | number | symbol>
+    const existingObj = this.objects[_key]
+
+    if (!existingObj) {
+      console.warn(`There is no object with key ${key} in ObjectValueSet`)
+      return
+    }
+
+    const newObject = {
+      ...existingObj,
+      ...newObjectProperties,
+    } as typeof existingObj
+
+    this.objects[_key] = newObject
   }
 
   private hasObject(obj: T) {
