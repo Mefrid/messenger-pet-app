@@ -10,4 +10,4 @@ dist
 
 .eslintcache
 
-.env
+.env*
