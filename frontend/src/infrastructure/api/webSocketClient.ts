@@ -27,7 +27,7 @@ class WebSocketClient implements IWebSocketClient {
 
     this.isConnecting = true
     this.close()
-    this.webSocket = new WebSocket(`ws://${import.meta.env.VITE_HOST}/?token=${accessToken}`)
+    this.webSocket = new WebSocket(`ws://127.0.0.1:3000/?token=${accessToken}`)
 
     this.webSocket.addEventListener('open', () => {
       console.log('Connected to server')

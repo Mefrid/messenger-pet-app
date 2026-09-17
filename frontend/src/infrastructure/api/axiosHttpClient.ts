@@ -35,7 +35,7 @@ export class AxiosHttpClient implements IHttpClient {
     this.webSocketClient = webSocketClient
     this.accessTokenProvider = accessTokenProvider
     this.axios = axios.create({
-      baseURL: `http://${import.meta.env.VITE_HOST}/api/v1`,
+      baseURL: `/api/v1`,
       timeout: 10000,
       withCredentials: true,
       headers: {
@@ -123,13 +123,9 @@ export class AxiosHttpClient implements IHttpClient {
   }
 
   private async updateAccessToken() {
-    const { data } = await axios.post<{ accessToken: string }>(
-      `http://${import.meta.env.VITE_HOST}/api/v1/auth/refresh`,
-      undefined,
-      {
-        withCredentials: true,
-      },
-    )
+    const { data } = await axios.post<{ accessToken: string }>(`/api/v1/auth/refresh`, undefined, {
+      withCredentials: true,
+    })
 
     const newToken = data.accessToken
     await this.accessTokenProvider.save(newToken)
