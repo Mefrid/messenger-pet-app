@@ -66,8 +66,8 @@ export const useChatsStore = defineStore('chats', {
     },
   },
   getters: {
-    isEmpty(state) {
-      return state.chats.length === 0 && state.isInitialized
+    isEmpty(state): boolean {
+      return this.chatsWithLastMessage.length === 0 && state.isInitialized
     },
 
     chatsWithParticipants(state): ChatDetailed[] {
